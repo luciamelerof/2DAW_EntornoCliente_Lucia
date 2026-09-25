@@ -62,8 +62,8 @@ function countSelected(selectObject) {
     return numberSelected;
 }
 
-const origen = document.selectForm1.musicTypes;
-const destino = document.selectForm2.musicTypes;
+const origen = document.selectForm1.musicTypes1;
+const destino = document.selectForm2.musicTypes2;
 
 // Pasar las opciones seleccionadas del form 1 al form 2
 document.getElementById("btnPasar").addEventListener("click", () => {
@@ -79,4 +79,25 @@ document.getElementById("btnPasar").addEventListener("click", () => {
 document.getElementById("btnContar").addEventListener("click", () => {
     console.log(`You have selected ${countSelected(destino)} option(s).`);
 });
+
+// Opción maestro
+let boton2 = document.getElementById("btn2");
+boton2.addEventListener("click",
+    function () {
+        let s1 = document.getElementById("musicTypes");
+        let s2 = document.getElementById("vacio");
+
+        for (let i = s1.options.length - 1; i >= 0; i--) {
+            if (s1.options[i].selected) {
+                s2.appendChild(s1.options[i]);
+            }
+        }
+    });
+
+/// Otro ejemplo
+let numero = 2;
+for (let i = 0; i <= 10; i++) {
+    console.log(numero + '*' + i + '=' + numero*i);
+}
+
 
