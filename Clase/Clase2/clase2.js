@@ -11,7 +11,7 @@ function carTypes(name) {
 
 var car = {myCar: "Saturn", getCar: carTypes("Honda"), special: sales};
 
-console.log(car.carTypes("Honda"));
+console.log(car.getCar);
 console.log(car.special);
 console.log(car.myCar);
 
@@ -24,5 +24,11 @@ console.log(car.manyCars.b); // Jeep
 // Literal de cadena
 let saludo = "hola";
 
-console.log('Hola ${saludo}');
+console.log(`Hola ${saludo}`);
+
+// x++ frente ++x
+var x = 3;
+console.log(x++); // 3
+x = 3;
+console.log(++x); // 5
 
