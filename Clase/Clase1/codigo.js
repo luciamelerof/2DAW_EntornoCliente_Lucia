@@ -115,6 +115,9 @@ console.log(parseInt(y) + 1);
 "37" - 7; // 30
 "30" + 12 // 3012
 
+// Pasar a otro sistema numérico:
+parseInt("101", 2); // primer parametro: numero en binario, segundo: si es binario(2), hexadecimal(16)...
+
 
 
 
