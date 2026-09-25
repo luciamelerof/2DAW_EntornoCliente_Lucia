@@ -1,4 +1,5 @@
 // Primer ejercicio
+
 var sales = "toyota";
 
 function carTypes(name) {
@@ -94,10 +95,7 @@ boton2.addEventListener("click",
         }
     });
 
-/// Otro ejemplo
-let numero = 2;
-for (let i = 0; i <= 10; i++) {
-    console.log(numero + '*' + i + '=' + numero*i);
-}
+
+
 
 
