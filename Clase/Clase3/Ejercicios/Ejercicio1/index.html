@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <h1>Alta de profesor</h1>
+
+    <form id="formAlumno">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" pattern="[0-9]{8}[A-Za-z]" required><br><br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required><br><br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" required><br><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" pattern="[0-9]{9}" required><br><br>
+
+        <button id="boton" type="button">Guardar</button>
+        <br>
+
+        <h3>AÑADIR ASIGNATURA</h3>
+        <label for="dniAsignatura">DNI:</label>
+        <input type="text" id="dniAsignatura" pattern="[0-9]{8}[A-Za-z]" required><br><br>
+
+        <label for="asigNombre">Asignatura:</label>
+        <input type="text" id="asigNombre" required><br><br>
+
+        <label for="asigCodigo">Código asignatura:</label>
+        <input type="text" id="asigCodigo" required><br><br>
+        <button id="botonAsignatura" type="button">Guardar</button>
+
+        <h3>Buscar profesor</h3>
+        <label for="dniProfesor">DNI del profesor:</label>
+        <input type="text" id="dniProfesor" required>
+        <button id="botonProfe" type="button">Buscar profe</button>
+    </form>
+
+    <script src="ejercicio1.js"></script>
+</body>
+
+</html>
