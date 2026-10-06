@@ -82,8 +82,6 @@ var profe = {
 
 datos.push(profe);
 
-// Formulario + HTML
-
 var dni = document.getElementById("dni");
 var nombre = document.getElementById("nombre");
 var apellido = document.getElementById("apellido");
