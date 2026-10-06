@@ -4,7 +4,7 @@
 function crearDate(anio, mes, dia, hora, minuto, segundo) {
     var fecha = new Date(0);
 
-    fecha.setFullYear(anio, mes, -1, dia); // evita el problema de años < 100
+    fecha.setFullYear(anio, mes - 1, dia); // evita el problema de años < 100
     fecha.setHours(hora, minuto, segundo, 0);
 
     return fecha;
@@ -30,18 +30,23 @@ function Tiempo(anio, mes, dia, hora, minuto, segundo) {
 }
 
 // Métodos internos
-Tiempo.prototype.cargarDesdeDate = function (fecha) {
+Tiempo.prototype.cargarDate = function (fecha) {
     this.anio = fecha.getFullYear();
     this.mes = fecha.getMonth() + 1;
     this.dia = fecha.getDate();
     this.hora = fecha.getHours();
+    this.minuto = fecha.getMinutes();
     this.segundo = fecha.getSeconds();
 }
 
-// Ajusta valores fuera de rango, como minuto 75 = 1 hora y 15 mins
 Tiempo.prototype.toDate = function () {
-    this.cargarDesdeDate(this.toDate());
-}
+    return crearDate(this.anio, this.mes, this.dia, this.hora, this.minuto, this.segundo);
+};
+
+// Ajusta valores fuera de rango, como minuto 75 = 1 hora y 15 mins
+Tiempo.prototype.normalizar = function () {
+    this.cargarDate(this.toDate());
+};
 
 // Getters
 Tiempo.prototype.getAnio = function () { return this.anio; };
@@ -83,7 +88,7 @@ Tiempo.prototype.esMenor = function (otroTiempo) {
 };
 
 Tiempo.prototype.esIgual = function (otroTiempo) {
-    return this.toDate().getTime === otroTiempo.toDate().getTime();
+    return this.toDate().getTime() === otroTiempo.toDate().getTime();
 };
 
 // Sumar horas, minutos y segundos de otroTiempo 
@@ -94,14 +99,14 @@ Tiempo.prototype.sumaHora = function (otroTiempo) {
         this.minuto + otroTiempo.getMinuto(),
         this.segundo + otroTiempo.getSegundo()
     );
-    this.cargarDesdeDate(fecha);
+    this.cargarDate(fecha);
 };
 
 // Ejemplos de uso
 
 console.log("CONSTRUCTOR");
 var tiempo1 = new Tiempo(2024, 2, 28, 22, 45, 30);
-var tiempo2 = new Tiempo(2025, 12, 31, 59, 59);
+var tiempo2 = new Tiempo(2025, 12, 31, 23, 59, 59);
 var tActual = new Tiempo(0, 0, 0, 0, 0, 0);
 
 console.log("tiempo1: ", tiempo1.getFechaCompleta(), tiempo1.getHoraCompleta());
@@ -137,8 +142,8 @@ console.log(2000, " es bisiesto: ", new Tiempo(2000, 1, 1, 0, 0, 1).esBisiesto()
 
 console.log("COMPARACIONES");
 var tiempo4 = new Tiempo(2024, 2, 28, 22, 45, 30); // igual que tiempo1
-console.log("tiempo1 esMayor tiempo2:", tiempo1.esMayor(tiempo2)); // true
-console.log("tiempo1 esMenor tiempo2:", tiempo1.esMenor(tiempo2)); // false
+console.log("tiempo1 esMayor tiempo2:", tiempo1.esMayor(tiempo2)); // false
+console.log("tiempo1 esMenor tiempo2:", tiempo1.esMenor(tiempo2)); // true
 console.log("tiempo1 esIgual tiempo4:", tiempo1.esIgual(tiempo4)); // true
 console.log("tiempo1 esIgual tiempo2:", tiempo1.esIgual(tiempo2)); // false
 
