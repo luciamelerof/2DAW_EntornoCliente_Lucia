@@ -2,10 +2,10 @@
 
 // Función auxiliar: crea Date a partir de los 6 valores (mes 1-12)
 function crearDate(anio, mes, dia, hora, minuto, segundo) {
-    var fecha = new Date(0);
+    var fecha = new Date(0); // Crea un objeto Date que vale 0 milisegundos desde el 1 de enero de 1970 a las 00:00:00 UTC
 
-    fecha.setFullYear(anio, mes - 1, dia); // evita el problema de años < 100
-    fecha.setHours(hora, minuto, segundo, 0);
+    fecha.setFullYear(anio, mes - 1, dia); // cambia año, mes y día
+    fecha.setHours(hora, minuto, segundo, 0); // cambia hora, minuto, segundo y milisegundos
 
     return fecha;
 }
