@@ -1,4 +1,3 @@
-
 //FUNCION PARA CREAR LA COOKIE
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
@@ -6,6 +5,7 @@ function setCookie(cname, cvalue, exdays) {
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+
 //FUNCION PARA LEER LA COOKIE
 function getCookie(cname) {
     let name = cname + "=";
