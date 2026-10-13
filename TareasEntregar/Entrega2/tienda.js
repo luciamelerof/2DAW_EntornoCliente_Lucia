@@ -1,5 +1,4 @@
 // Clase Producto
-
 class Producto {
     constructor(unidades, producto) {
         this.unidades = unidades;
@@ -27,7 +26,7 @@ class Producto {
     }
 }
 
-//FUNCION PARA CREAR LA COOKIE
+// FUNCION PARA CREAR LA COOKIE
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -35,7 +34,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
 }
 
-//FUNCION PARA LEER LA COOKIE
+// FUNCION PARA LEER LA COOKIE
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -62,7 +61,7 @@ function cargarCarrito() {
 }
 
 function mostrarCarrito() {
-    datos = cargarCarrito();
+    let datos = cargarCarrito();
     let total = 0;
     console.log("Carrito: ");
 
@@ -81,8 +80,11 @@ var btn_carrito = document.getElementById("btn-carrito");
 var datos = cargarCarrito();
 
 // Función añadir producto
-if (btn_comprar) {
-    btn_comprar.addEventListener('click', function (event) {
+// Función añadir producto
+var formulario = document.querySelector("form");
+
+if (formulario) {
+    formulario.addEventListener('submit', function (event) {
         event.preventDefault();
         datos.push(new Producto(Number(unidades.value), producto.value));
         setCookie("carrito", JSON.stringify(datos), 7);
@@ -92,7 +94,6 @@ if (btn_comprar) {
         producto.value = "";
     });
 }
-
 // Función ver carrito
 btn_carrito.addEventListener('click', function (event) {
     event.preventDefault();
@@ -104,12 +105,6 @@ btn_carrito.addEventListener('click', function (event) {
     }
 });
 
-// Al cargar carrito.html, mostrarlo directamente
 if (!btn_comprar) {
     mostrarCarrito();
 }
-
-
-
-
-
