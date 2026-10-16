@@ -69,7 +69,7 @@ function mostrarCarrito() {
         console.log(element.toString());
         total += element.unidades;
     });
-
+    
     console.log("Total de productos: ", total);
 }
 
