@@ -2,13 +2,15 @@ class Carta {
     #n;
     #p;
 
-    constructor(otra) {
-        if (otra instanceof Carta) {
-            this.#n = otra.getN();
-            this.#p = otra.getP();
+    constructor(n = 1, p = "c") {
+        if (n instanceof Carta) {
+            this.#n = n.#n;
+            this.#p = n.#p;
         } else {
             this.#n = 1;
             this.#p = "c";
+            this.setN(n);
+            this.setP(p);
         }
     }
 
@@ -21,76 +23,87 @@ class Carta {
     }
 
     setN(valor) {
-        if (Number.isInteger(valor) && valor >= 1 && valor <= 13) {
-            this.#n = valor;
-        } else {
-            console.log("Número no válido. (1-13).");
-        }
+        this.#n = valor;
     }
 
     setP(valor) {
-        if (["p", "t", "c", "r"].includes(valor)) {
-            this.#p = valor;
-        } else {
-            console.log("Palo no válido. [p, t, c, r].");
-        }
+        this.#p = valor;
     }
 
     mostrarCarta() {
-        const palos = { p: "picas", t: "treboles", c: "corazones", r: "rombos" };
+        const palos = { p: "picas", t: "tréboles", c: "corazones", r: "rombos" };
         const especiales = { 1: "As", 11: "Jack", 12: "Reina", 13: "Rey" };
 
         const numero = especiales[this.#n] ?? this.#n;
+        const articulo = this.#n === 12 ? "la" : "el";
 
-        /*
-        if (numero == 1 || numero == 11 || numero == 12 || numero == 13) {
-            numero = especiales[this.#n];
-        } else {
-            numero = this.#n;
-        }
-
-*/
-        const palo = palos[this.#p];
-
-        console.log(`Es el ${numero} de ${palo}.`);
+        console.log(`Es ${articulo} ${numero} de ${palos[this.#p]}.`);
     }
 
     compararCarta(otra) {
         const ordenPalos = { t: 4, r: 3, p: 2, c: 1 };
-        let resultado = 0;
 
-        if (this.getN() !== otra.getN()) {
-            resultado = this.getN() > otra.getN() ? 1 : -1;
-        } else if (this.getP() !== otra.getP()) {
-            resultado = ordenPalos[this.getP()] > ordenPalos[otra.getP()] ? 1 : -1;
+        if (this.#n !== otra.#n) {
+            return this.#n > otra.#n ? 1 : -1;
         }
-
-        /*
-        if (resultado === 1) {
-            console.log("Gana la carta actual.");
-        } else if (resultado === -1) {
-            console.log("Gana la carta recibida.");
-        } else {
-            console.log("Empate.");
+        if (this.#p !== otra.#p) {
+            return ordenPalos[this.#p] > ordenPalos[otra.#p] ? 1 : -1;
         }
-        */
-
-        return resultado;
+        return 0;
     }
 }
 
 // Prueba
 const c1 = new Carta(12, "t");
-c1.mostrarCarta();               // Es la Reina de treboles
+c1.mostrarCarta();               // Es la Reina de tréboles.
 
 const c2 = new Carta(c1);
 c2.setP("p");
-c2.mostrarCarta();               // Es la Reina de picas
+c2.mostrarCarta();               // Es la Reina de picas.
 
-if (c1.compararCarta(c2) == 1) {
-    console.log("Gana c2");
-} else if (c1.compararCarta(c2) == -1) {
+const resultado = c1.compararCarta(c2);
+
+if (resultado === 1) {
     console.log("Gana c1");
+} else if (resultado === -1) {
+    console.log("Gana c2");
 } else {
     console.log("EMPATE");
+}
+
+// Excepciones
+class ExcepcionesCarta extends Error {
+    constructor(mensaje) {
+        super(mensaje);
+        this.name = "ExcepcionesCarta";
+        this.autor = "Lucía Melero Fernández";
+    }
+}
+
+function comprobarValores(carta) {
+    if (!Number.isInteger(carta.getN()) || carta.getN() < 1 || carta.getN() > 13) {
+        throw new ExcepcionesCarta("Número de carta incorrecto (1 - 13).");
+    } else if (!['p', 'r', 't', 'c'].includes(carta.getP())) {
+        throw new ExcepcionesCarta("Palo inválido. (p, t, c, r).");
+    }
+}
+
+// Prueba de excepciones
+const pruebas = [
+    new Carta(1, "manzanas"),
+    new Carta(-5, "r"),
+    new Carta(7, "c")
+];
+
+for (const carta of pruebas) {
+    try {
+        comprobarValores(carta);
+        carta.mostrarCarta();
+    } catch (err) {
+        if (err instanceof ExcepcionesCarta) {
+            console.log(`${err.name}: ${err.message} (Autora: ${err.autor})`);
+        } else {
+            console.log("Error inesperado:", err.message);
+        }
+    }
 }
