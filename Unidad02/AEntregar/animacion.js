@@ -52,13 +52,16 @@ cartaRobada.addEventListener("click", () => {
     }
 });
 
+// Barajar y cortar: se muestra el nuevo orden por consola
 btnBarajar.addEventListener("click", () => {
     baraja.barajar();
+    baraja.mostrarBaraja();
     mensaje.textContent = "Baraja barajada.";
 });
 
 btnCortar.addEventListener("click", () => {
     let pos = baraja.cortar();
+    baraja.mostrarBaraja();
     mensaje.textContent = `Baraja cortada por la posición ${pos}.`;
 });
 
@@ -71,5 +74,3 @@ btnReiniciar.addEventListener("click", () => {
     nombreCarta.textContent = "";
     mensaje.textContent = "Baraja creada y ordenada.";
 });
-
-
