@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baraja - Lucía Melero Fernández</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Baraja francesa</h1>
+
+    <div class="contenedor">
+        <!-- Izquierda: el mazo boca abajo -->
+        <div class="izquierda">
+            <img id="mazo" src="reverso.png" alt="Mazo" style="position:relative; top:0px;">
+            <p>Cartas en el mazo: <span id="numCartas">52</span></p>
+        </div>
+
+        <!-- Derecha: el proceso -->
+        <div class="derecha">
+            <button id="barajar">Barajar</button>
+            <button id="cortar">Cortar</button>
+            <button id="robar">Robar</button>
+            <button id="reiniciar">Reiniciar</button>
+
+            <p id="mensaje">Baraja creada y ordenada.</p>
+
+            <img id="cartaRobada" src="./reverso.png" alt="Carta robada" style="visibility:hidden;">
+            <p id="nombreCarta"></p>
+        </div>
+    </div>
+
+    <script src="./baraja.js"></script>
+    <script src="./animacion.js"></script>
+</body>
+
+</html>
