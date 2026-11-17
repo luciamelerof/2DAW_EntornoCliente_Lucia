@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background: #f2f4f7;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+    margin: 0;
+}
+
+form {
+    background: #fff;
+    width: 100%;
+    max-width: 560px;
+    padding: 28px 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+}
+
+.fila {
+    display: flex;
+    gap: 16px;
+}
+
+.fila .campo {
+    flex: 1;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: .9rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 9px 11px;
+    border: 1px solid #c9ced6;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b6ef5;
+    box-shadow: 0 0 0 3px rgba(59, 110, 245, .15);
+}
+
+fieldset {
+    border: 1px solid #c9ced6;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 0 0 14px;
+}
+
+legend {
+    font-weight: 600;
+    font-size: .9rem;
+    padding: 0 4px;
+}
+
+fieldset label {
+    font-weight: 400;
+    margin-right: 14px;
+    display: inline-block;
+}
+
+.error {
+    color: #d12c2c;
+    font-size: .8rem;
+    min-height: 1em;
+    margin-top: 3px;
+    display: block;
+}
+
+/* Clases que pondrás/quitarás desde JS */
+.invalido {
+    border-color: #d12c2c !important;
+    background: #fff5f5;
+}
+
+.valido {
+    border-color: #2e9e5b !important;
+}
+
+.botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background: #3b6ef5;
+    color: #fff;
+}
+
+button[type="reset"] {
+    background: #e4e7ec;
+}
+
+#resultado {
+    margin-top: 14px;
+    color: #2e9e5b;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .fila {
+        flex-direction: column;
+        gap: 0;
+    }
+}

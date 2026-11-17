@@ -1,0 +1,28 @@
+<form method="get" action="" name="myForm" id="myForm">
+    <label for="campo1">Nombre: </label>
+    <input type="text" name="nombre" id="campo1">
+    <br>
+    <div id="cajaBotones">
+        <label><input type="radio" name="sexo" value="H"> Hombre</label>
+        <label><input type="radio" name="sexo" value="M"> Mujer</label>
+    </div>
+    <br>
+    <label for="nuevoSexo">Indica otro sexo: </label>
+    <input type="text" name="nuevoSexo" id="nuevoSexo">
+
+    <br>
+
+    <label for="">Selecciona tus aficiones (mínimo 1): </label>
+    <label for="actividades">
+        <input type="checkbox" name="aficiones" value="cine" id="cine">CINE
+        <input type="checkbox" name="aficiones" value="teatro" id="teatro">TEATRO
+        <input type="checkbox" name="aficiones" value="deporte" id="deporte">DEPORTE
+    </label>
+
+    <br>
+    <button type="button" id="addSexo">Añadir</button>
+    <button type="submit" id="saluda">Saludar</button>
+    <br>
+    
+</form>
+<script src="./formulario.js"></script>
