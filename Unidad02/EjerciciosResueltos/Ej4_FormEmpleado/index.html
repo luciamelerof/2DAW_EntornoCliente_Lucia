@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ej4 - Formulario de empleado (versión profe)</title>
+    <style>
+        #errores { color: red; font-size: small; margin-bottom: 20px; }
+        .campo { margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+    <h1>Formulario de empleado</h1>
+
+    <!-- UN solo div para todos los errores, como en el del profe -->
+    <div id="errores"></div>
+
+    <!-- novalidate: desactiva la validación del navegador (required, pattern...)
+         para que se vea la validación hecha con JS.
+         Si en el examen el HTML trae "required" y NO trae novalidate,
+         el navegador bloquea el envío ANTES de que se ejecute tu evento submit. -->
+    <form action="#" method="post" novalidate>
+        <div class="campo">
+            <label for="dni">DNI</label>
+            <input type="text" id="dni" name="dni" maxlength="9">
+        </div>
+        <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre">
+        </div>
+        <div class="campo">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos">
+        </div>
+        <div class="campo">
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad">
+        </div>
+        <div class="campo">
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <!-- type="date": su .value llega como "AAAA-MM-DD" -->
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+        </div>
+
+        <fieldset>
+            <legend>Tipo de empleado</legend>
+            <label><input type="radio" name="tipoEmpleado" value="Directivo"> Directivo</label>
+            <label><input type="radio" name="tipoEmpleado" value="Encargado"> Encargado</label>
+            <label><input type="radio" name="tipoEmpleado" value="Operario"> Operario</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Departamento/s</legend>
+            <label><input type="checkbox" name="departamentos" value="Administración"> Administración</label>
+            <label><input type="checkbox" name="departamentos" value="Recursos Humanos"> Recursos Humanos</label>
+            <label><input type="checkbox" name="departamentos" value="Producción"> Producción</label>
+            <label><input type="checkbox" name="departamentos" value="Ventas"> Ventas</label>
+        </fieldset>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script src="codigo.js"></script>
+</body>
+</html>

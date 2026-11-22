@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 2 - reserva</title>
+</head>
+
+<body>
+    <form id="form" method="get" action="">
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre">
+        <span class="error" id="err-nombre"></span>
+
+        <br>
+
+        <label for="telefono">Teléfono: </label>
+        <input type="text" id="telefono" name="telefono">
+        <span class="error" id="err-telefono"></span>
+
+        <br>
+
+        <label for="nPersonas">Número de personas: </label>
+        <input type="number" id="nPersonas" name="nPersonas">
+        <span class="error" id="err-npersonas"></span>
+
+        <br>
+
+        <label for="turno">Turno:
+            <input type="radio" id="comida" name="turno" value="comida">
+            <input type="radio" id="cena" name="turno" value="cena">
+        </label>
+        <span class="error" id="err-turno"></span>
+
+        <br>
+
+        <label for="fecha">Fecha: </label>
+        <input type="date" id="fecha" name="fecha">
+        <span class="error" id="err-fecha"></span>
+
+        <br>
+
+        <fieldset>
+            <legend>Alergias</legend>
+            <div id="cajaAlergia">
+                <label> <input type="checkbox" id="lactosa" name="alergia" value="lactosa">lactosa</label>
+                <label><input type="checkbox" id="gluten" name="alergia" value="gluten">gluten</label>
+            </div>
+            <input type="text" id="nuevaAlergia" value="" placeholder="Añade tu alergia aquí">
+            <button type="button" id="anadirAlergia">Añadir</button>
+            <span class="error" id="err-alergia"></span>
+        </fieldset>
+        <br>
+
+        <button type="submit" id="btnEnviar">Enviar</button>
+    </form>
+    <script src="./reserva.js"></script>
+</body>
+
+</html>

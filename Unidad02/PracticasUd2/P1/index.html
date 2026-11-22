@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablero de tareas</title>
+    <style>
+        body { font-family: sans-serif; max-width: 400px; margin: 40px auto; }
+        #lista { list-style: none; padding: 0; }
+        #lista li { padding: 8px; margin: 4px 0; background: #eef; cursor: pointer; user-select: none; }
+        #lista li.hecha { text-decoration: line-through; opacity: 0.5; }
+        #error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Tareas</h1>
+    <input type="text" id="nuevaTarea" placeholder="Escribe una tarea">
+    <button id="btnAnadir">Añadir</button>
+    <p id="error"></p>
+    <p>Pendientes: <span id="contador">0</span></p>
+    <ul id="lista"></ul>
+    <script src="tareas.js"></script>
+</body>
+</html>
