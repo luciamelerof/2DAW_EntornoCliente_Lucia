@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 2 - alta socios<title>
+</head>
+
+<body>
+    <form id="form" method="get" action="">
+        <label for="dni">DNI: </label>
+        <input type="text" id="dni" name="dni">
+        <span class="error" id="err-dni"></span>
+
+        <br>
+
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre" name="nombre">
+        <span class="error" id="err-nombre"></span>
+
+        <br>
+
+        <label for="apellidos">Apellidos: </label>
+        <input type="text" id="apellidos" name="apellidos">
+        <span class="error" id="err-apellidos"></span>
+
+        <br>
+
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email">
+        <span class="error" id="err-email"></span>
+        <br>
+
+        <label for="telefono">Teléfono: </label>
+        <input type="text" id="telefono" name="telefono">
+        <span class="error" id="err-telefono"></span>
+
+        <br>
+
+        <label for="fechaNac">Fecha nacimiento: </label>
+        <input type="text" id="fechaNac" name="fechaNac">
+        <span class="error" id="err-fechaNac"></span>
+        <br>
+
+        <fieldset>
+            <legend>Tipo de socio</legend>
+            <label><input type="radio" name="tipo" value="infantil">Infantil</label>
+            <label><input type="radio" name="tipo" value="adulto">Adulto</label>
+            <label><input type="radio" name="tipo" value="jubilado">Jubilado</label>
+        </fieldset>
+        <span class="error" id="err-tipo"></span>
+
+        <br>
+
+        <fieldset>
+            <legend>Géneros favoritos</legend>
+            <label><input type="checkbox" name="generos" value=novela>Novela</label>
+            <label><input type="checkbox" name="generos" value=comic>Cómic</label>
+            <label><input type="checkbox" name="generos" value=ensayo>Ensayo</label>
+            <label><input type="checkbox" name="generos" value=poesia>Poesía</label>
+            <label><input type="checkbox" name="generos" value="ciencia ficcion">Ciencia ficción</label>
+        </fieldset>
+        <span class="error" id="err-generos"></span>
+
+        <button type="submit" id="btnEnviar">Enviar</button>
+    </form>
+    <script src="clase.js"></script>
+    <script src="ejercicio.js"></script>
+</body>
+
+</html>

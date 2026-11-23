@@ -4,6 +4,7 @@ const bMezclar = document.getElementById('mezclar');
 const bSacar = document.getElementById('sacarBola');
 const bCortar = document.getElementById('cortar');
 
+const zonaNumero = document.getElementById('zonaNumero');
 const numero = document.getElementById('numero');
 const quedan = document.getElementById('quedan');
 const salido = document.getElementById('salido');
@@ -20,6 +21,8 @@ bNuevo.addEventListener('click', () => {
     salido.textContent = '';
     quedan.textContent = miBombo.quedan();
     mensaje.textContent = 'Bombo nuevo';
+
+    zonaNumero.style.background = 'blue';
 });
 
 // Sacar 
@@ -42,6 +45,14 @@ bSacar.addEventListener('click', () => {
     } else {
         salido.textContent += ', ' + bola.numero;
     }
+
+    if (bola.numero <= 30) {
+        zonaNumero.style.background = 'blue';
+    } else if (bola.numero <= 60) {
+        zonaNumero.style.background = 'green';
+    } else {
+        zonaNumero.style.background = 'red';
+    }
 });
 
 bMezclar.addEventListener('click', () => {
@@ -53,3 +64,14 @@ bCortar.addEventListener('click', () => {
     const pos = miBombo.cortar();
     mensaje.textContent = `Cortado por la posición ${pos}`;
 });
+
+zonaNumero.addEventListener('dblclick', () => {
+    if (miBombo.quedan() === 90) {
+        mensaje.textContent = `Aún no ha salido ninguna bola`;
+        return;
+    }
+
+    mensaje.textContent = `Línea con el número ${numero.textContent}`;
+
+});
+

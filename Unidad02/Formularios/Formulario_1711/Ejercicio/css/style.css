@@ -133,3 +133,71 @@ button[type="reset"] {
         gap: 0;
     }
 }
+
+/* Coloca la lista debajo del formulario */
+body {
+    flex-direction: column;
+    align-items: center;
+}
+
+#lista {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 28px;
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+}
+
+#lista:has(tbody:empty) {
+    display: none;
+}
+
+#lista table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: .9rem;
+}
+
+#lista th,
+#lista td {
+    padding: 12px 14px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#lista th {
+    background: #3b6ef5;
+    color: #fff;
+    font-weight: 600;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+#lista tbody tr {
+    border-bottom: 1px solid #e4e7ec;
+    transition: background .15s;
+}
+
+#lista tbody tr:nth-child(even) {
+    background: #f7f8fa;
+}
+
+#lista tbody tr:hover {
+    background: #eaf0ff;
+}
+
+#lista tbody tr:last-child {
+    border-bottom: none;
+}
+
+#lista td:first-child {
+    font-weight: 600;
+    font-family: ui-monospace, monospace;
+}
+
+#lista td:nth-child(6) {
+    text-transform: capitalize;
+}

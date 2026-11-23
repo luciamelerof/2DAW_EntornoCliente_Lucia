@@ -18,10 +18,18 @@
 
 // Recojo el formulario
 let form = document.forms['formEmpleado'];
+let empresa = new Empresa();
 
 form.addEventListener('submit', (e) => {
     e.preventDefault(); // retiene el formulario y no se envía hasta que se valide
     let ok = true;
+
+    const dni = form.elements['dni'].value;
+    const nombre = form.elements['nombre'].value;
+    const apellidos = form.elements['apellidos'].value;
+    const edad = form.elements['edad'].value;
+    const fechaNac = form.elements['fechaNac'].value;
+    const tipo = form.elements['tipo'].value;
 
     // DNI
 
@@ -30,7 +38,7 @@ form.addEventListener('submit', (e) => {
     errDni.textContent = '';
 
     // Compruebo cosas
-    if (!compruebaDNI(form.elements['dni'].value)) {
+    if (!compruebaDNI(dni)) {
         errDni.textContent = 'DNI inválido';
         ok = false;
     }
@@ -42,12 +50,12 @@ form.addEventListener('submit', (e) => {
     errNombre.textContent = '';
     errApellidos.textContent = '';
 
-    if (!compruebaNombre(form.elements['nombre'].value)) {
+    if (!compruebaNombre(nombre)) {
         errNombre.textContent = 'Nombre inválido';
         ok = false;
     }
 
-    if (!compruebaNombre(form.elements['apellidos'].value)) {
+    if (!compruebaNombre(apellidos)) {
         errApellidos.textContent = 'Apellido/s inválido/s';
         ok = false;
     }
@@ -56,7 +64,7 @@ form.addEventListener('submit', (e) => {
 
     errEdad.textContent = '';
 
-    if(!compruebaEdad(form.elements['edad'].value)) {
+    if (!compruebaEdad(edad)) {
         errEdad.textContent = 'Edad inválida';
         ok = false;
     }
@@ -65,7 +73,7 @@ form.addEventListener('submit', (e) => {
 
     errFecha.textContent = '';
 
-    if (!compruebaFecha(form.elements['fechaNac'].value)) {
+    if (!compruebaFecha(fechaNac)) {
         errFecha.textContent = 'Fecha inválida';
         ok = false;
     }
@@ -74,7 +82,7 @@ form.addEventListener('submit', (e) => {
 
     errTipo.textContent = '';
 
-    if(form.elements['tipo'].value === '') {
+    if (tipo === '') {
         errTipo.textContent = 'Seleccione alguna opción';
         ok = false;
     }
@@ -85,20 +93,29 @@ form.addEventListener('submit', (e) => {
 
     const marcados = [];
 
-    for(const dep of form.elements['departamentos']) {
-        if(dep.checked) {
+    for (const dep of form.elements['departamentos']) {
+        if (dep.checked) {
             marcados.push(dep.value);
         }
     }
 
-    if(marcados.length === 0) {
+    if (marcados.length === 0) {
         errDep.textContent = 'Seleccione al menos una opción';
         ok = false;
     }
 
     // Si todo va bien, que se envíe
     if (ok) {
-        form.submit();
+        empresa.empleados.push(new Empleado(dni, nombre, apellidos, edad, fechaNac, tipo, marcados));
+        let listaEmpleados = document.getElementById('listaEmpleados');
+
+        listaEmpleados.innerHTML = '';
+
+        for (const empleado of empresa.empleados) {
+            listaEmpleados.innerHTML += `${empleado.toString()}`;
+        }
+
+        form.reset();
     }
 });
 
@@ -131,7 +148,7 @@ function compruebaEdad(valor) {
 function compruebaFecha(valor) {
     const fecha = valor.trim();
 
-    if(!/^\d{2}\/\d{2}\/\d{4}$/.test(fecha)) {
+    if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fecha)) {
         return false;
     }
 
